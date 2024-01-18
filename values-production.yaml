@@ -19,9 +19,9 @@ clusterGroup:
       name: rhacs-operator  #packageName
       namespace: openshift-operators # operator namespace
 
-    quay-bridge-operator:
-      name: quay-bridge-operator
-      namespace: openshift-operators
+    # quay-bridge-operator:
+    #   name: quay-bridge-operator
+    #   namespace: openshift-operators
 
   projects:
     - app
@@ -38,8 +38,8 @@ clusterGroup:
       project: secured
       path: charts/hub/acs/secured
 
-    quay-integration:
-      name: quay-integration
-      namespace: openshift-operators
-      project: secured
-      path: charts/region/quay
+    # quay-integration:
+    #   name: quay-integration
+    #   namespace: openshift-operators
+    #   project: secured
+    #   path: charts/region/quay

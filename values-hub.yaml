@@ -77,40 +77,40 @@ clusterGroup:
       project: opp
       path: charts/hub/acs/secured
 
-    storage:
-      name: storage
-      namespace: openshift-storage
-      project: opp
-      path: charts/hub/odf
+    # storage:
+    #   name: storage
+    #   namespace: openshift-storage
+    #   project: opp
+    #   path: charts/hub/odf
 
-    quay-registry:
-      name: quay-registry
-      namespace: quay-enterprise
-      project: opp
-      path: charts/hub/quay
+    # quay-registry:
+    #   name: quay-registry
+    #   namespace: quay-enterprise
+    #   project: opp
+    #   path: charts/hub/quay
 
-    opp-policy:
-      name: opp-policy
-      namespace: openshift
-      project: opp
-      path: charts/hub/opp
-      ignoreDifferences:
-      - group: operators.openshift.io
-        kind: Console
-        jsonPointers: 
-          - /spec/plugins
+    # opp-policy:
+    #   name: opp-policy
+    #   namespace: openshift
+    #   project: opp
+    #   path: charts/hub/opp
+    #   ignoreDifferences:
+    #   - group: operators.openshift.io
+    #     kind: Console
+    #     jsonPointers: 
+    #       - /spec/plugins
 
-    vault:
-      name: vault
-      namespace: vault
-      project: hub
-      path: common/hashicorp-vault
+    # vault:
+    #   name: vault
+    #   namespace: vault
+    #   project: hub
+    #   path: common/hashicorp-vault
 
-    golang-external-secrets:
-      name: golang-external-secrets
-      namespace: golang-external-secrets
-      project: external-secrets
-      path: common/golang-external-secrets
+    # golang-external-secrets:
+    #   name: golang-external-secrets
+    #   namespace: golang-external-secrets
+    #   project: external-secrets
+    #   path: common/golang-external-secrets
 
     external-secrets:
       name: external-secrets
