@@ -572,6 +572,9 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "unseal": {
+          "type": "boolean"
+        },
         "jobs": {
           "type": "array",
           "items": {
@@ -653,6 +656,9 @@
         "jobs"
       ],
       "title": "Imperative"
+    },
+    "Unseal": {
+      "type": "boolean"
     },
     "Job": {
       "type": "object",

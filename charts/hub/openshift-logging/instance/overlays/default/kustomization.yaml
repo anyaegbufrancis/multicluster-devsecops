@@ -1,0 +1,22 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base
+
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/logStore/elasticsearch/storage/storageClassName
+        value: 'azurefile-csi'
+    target:
+      kind: ClusterLogging
+      name: instance
+  - patch: |-
+      - op: replace
+        path: /spec/href
+        value: 'https://kibana-openshift-logging.apps.dd-aro.eastus.aroapp.io'
+    target:
+      kind: ConsoleLink
+      name: kibana-public-url

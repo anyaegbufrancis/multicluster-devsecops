@@ -1,0 +1,24 @@
+## Read SP ##
+apiVersion: v1
+kind: Secret
+metadata:
+  name: akv-sp-read
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+type: Opaque
+data:
+  ClientID: YzBmZTQwNTgtZmM4NS00ZGI5LWJjNWUtNDE0YTdjYTg0ZjZmCg==  #service-principal-ID
+  ClientSecret: S1RVOFF+aVBKQl9KUlFvfmguUHR1S2pBXzNmM3NGN0NoQ3BpZGI4Ygo= #service-principal-secret
+
+---
+## Push SP ##
+apiVersion: v1
+kind: Secret
+metadata:
+  name: akv-sp-push
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+type: Opaque
+data:
+  ClientID: MDg0NjdiOTYtNDI2OC00NjA0LTg0YjgtZjZhOTkxN2Y3OTUxCg==  #service-principal-ID
+  ClientSecret: S1RVOFF+aVBKQl9KUlFvfmguUHR1S2pBXzNmM3NGN0NoQ3BpZGI4Ygo= #service-principal-secret

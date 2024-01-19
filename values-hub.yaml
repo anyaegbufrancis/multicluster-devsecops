@@ -6,16 +6,96 @@ clusterGroup:
 # The pattern will apply these namespaces
 # and creates an operator group for that namespace
   namespaces:
-  - open-cluster-management
-  - vault
-  - golang-external-secrets
-  - rhacs-operator
-  - stackrox
-  - policies
-  - devsecops-ci
-  - openshift-storage
-  - quay-enterprise
+  - open-cluster-management:
+        annotations:
+          openshift.io/display-name: "Advanced Cluster Management for Kubernetes"
+        labels:
+          openshift.io/cluster-monitoring: "true"
+        operatorGroup: true
+        targetNamespaces:
+          - open-cluster-management
+  - hello-world:
+        operatorGroup: false
+
+  - ekho-external-secrets:
+        operatorGroup: true
   
+  - ansible-automation-platform:
+        operatorGroup: true
+        labels:
+          openshift.io/cluster-monitoring: "true"
+
+  - postgresql:
+      operatorGroup: false
+
+  - stackrox:
+      operatorGroup: false
+
+  - istio-system:
+      operatorGroup: false
+
+  - rhacs-operator:
+        operatorGroup: true
+        annotations:
+          openshift.io/display-name: Red Hat Advanced Cluster Security Operator
+
+  - policies:
+        operatorGroup: false
+
+  - openshift-operators-redhat:
+      operatorGroup: true
+  - openshift-file-integrity:
+        annotations:
+          openshift.io/display-name: OpenShift File Integrity Operator
+        operatorGroup: true
+        targetNamespaces:
+            - openshift-file-integrity
+
+  - openshift-distributed-tracing:
+      operatorGroup: true
+  - group-sync-operator:
+      operatorGroup: true
+      annotations:
+        openshift.io/display-name: "Group Sync Operator"
+        openshift.io/description: "Operator that synchronizes groups from external providers"
+      labels:
+        openshift.io/cluster-monitoring: "true"
+      targetNamespaces:
+        - group-sync-operator
+  - costmanagement-metrics-operator:
+      operatorGroup: true
+      annotations:
+        openshift.io/description: Operator that provides cost management information to cloud.redhat.com
+        openshift.io/display-name: Red Hat Cost Management Operator
+      targetNamespaces:
+        - costmanagement-metrics-operator
+  - cert-manager-operator:
+      operatorGroup: true
+      annotations:
+        openshift.io/display-name: Red Hat Certificate Manager Operator
+      labels:
+        openshift.io/cluster-monitoring: "true"
+      targetNamespaces:
+        - cert-manager-operator
+  - openshift-compliance:
+      operatorGroup: true
+      annotations:
+        openshift.io/display-name: OpenShift Compliance Operator
+      targetNamespaces:
+        - openshift-compliance
+  - openshift-logging:
+      operatorGroup: true
+      labels:
+        openshift.io/cluster-monitoring: "true"
+      targetNamespaces:
+        - openshift-logging
+  - rhbk-keycloak:
+      annotations:
+        openshift.io/description: "Red Hat Keycloak project"
+        openshift.io/display-name: "Red Hat Build of Keycloak"
+      operatorGroup: true
+      targetNamespaces:
+          - rhbk-keycloak
 #  subscriptions:  OpenShift Operator subscriptions from OLM/OperatorHub
 #  - name: the Operator package name (required)
 #    namespace: expected namespace as specified by Operator (defaults to openshift-operators)
@@ -29,17 +109,78 @@ clusterGroup:
       name: advanced-cluster-management
       namespace: open-cluster-management
 
+    ansible-automation-platform:
+      name: ansible-automation-platform-operator
+      namespace: ansible-automation-platform
+      channel: stable-2.4-cluster-scoped
+
     acs:
       name: rhacs-operator  #packageName
       namespace: openshift-operators # operator namespace
 
-    odf:
-      name: odf-operator
-      namespace: openshift-storage
+    ekho-external-secrets:
+      name: external-secrets-operator
+      channel: stable
+      source: community-operators
+      sourceNamespace: openshift-marketplace
 
-    quay:
-      name: quay-operator
-      namespace: openshift-operators
+    rhbk-keycloak:
+      name: rhbk-operator
+      namespace: rhbk-keycloak
+      channel: stable-v22
+
+    elasticsearch:
+      name: elasticsearch-operator
+      channel: stable
+
+    jaeger:
+      name: jaeger-product
+      channel: stable
+
+    kiali:
+      name: kiali-ossm
+      channel: stable
+
+    ossm:
+      name: servicemeshoperator
+      channel: stable
+
+    cost:
+      name: costmanagement-metrics-operator
+      namespace: costmanagement-metrics-operator
+      channel: stable
+
+    certmanager:
+      name: openshift-cert-manager-operator
+      namespace: cert-manager-operator
+      channel: stable-v1
+
+    compliance-operator:
+      name: compliance-operator
+      namespace: openshift-compliance
+      channel: stable
+
+    openshift-file-integrity:
+      name: file-integrity-operator
+      namespace: openshift-file-integrity
+      channel: release-0.1
+
+    group-sync-operator:
+      name: group-sync-operator
+      namespace: group-sync-operator
+      channel: alpha
+      source: community-operators
+
+    openshift-logging:
+      name: cluster-logging
+      namespace: openshift-logging
+      channel: stable
+
+    openshift-pipelines-operator:
+      name: openshift-pipelines-operator-rh
+      channel: pipelines-1.9
+
+    
 
 # The following section is used by
 # OpenShift GitOps (ArgoCD)
@@ -65,66 +206,95 @@ clusterGroup:
         jsonPointers:
           - /spec/loggingCA
 
-    acs-central:
-      name: acs-central
-      namespace: stackrox
-      project: opp
-      path: charts/hub/acs/central
+    aap-instance:
+      name: ansible-automation-platform
+      namespace: aap
+      project: hub
+      kustomize: true
+      path: charts/hub/ansible-automation-platform/overlays/default
+
+    autoscaler:
+      name: cluster-primer
+      namespace: openshift-machine-api
+      project: hub
+      path: charts/infra/autoscaler
+
+    rhbk-keycloak:
+      name: rhbk-keycloak
+      namespace: rhbk-keycloak
+      project: hub
+      kustomize: true
+      path: charts/hub/redhat-keycloak/overlays/default
+
+    postgresql:
+      name: postgresql
+      namespace: postgresql
+      project: postgresql
+      path: charts/all/apps/postgresql
 
     acs-secured:
       name: acs-secured
       namespace: stackrox
-      project: opp
-      path: charts/hub/acs/secured
+      project: secured
+      path: charts/secured/acs/secured
 
-    # storage:
-    #   name: storage
-    #   namespace: openshift-storage
-    #   project: opp
-    #   path: charts/hub/odf
+    ekho-external-secrets:
+      name: exho-external-secrets
+      namespace: ekho-external-secrets
+      project: secured
+      kustomize: true
+      path: charts/secured/ekho-external-secrets/overlays/default
 
-    # quay-registry:
-    #   name: quay-registry
-    #   namespace: quay-enterprise
-    #   project: opp
-    #   path: charts/hub/quay
-
-    # opp-policy:
-    #   name: opp-policy
-    #   namespace: openshift
-    #   project: opp
-    #   path: charts/hub/opp
-    #   ignoreDifferences:
-    #   - group: operators.openshift.io
-    #     kind: Console
-    #     jsonPointers: 
-    #       - /spec/plugins
-
-    # vault:
-    #   name: vault
-    #   namespace: vault
-    #   project: hub
-    #   path: common/hashicorp-vault
-
-    # golang-external-secrets:
-    #   name: golang-external-secrets
-    #   namespace: golang-external-secrets
-    #   project: external-secrets
-    #   path: common/golang-external-secrets
-
-    external-secrets:
-      name: external-secrets
-      namespace: devsecops-ci
-      project: external-secrets
-      path: charts/hub/external-secrets
-
-    cli-tools:
-      name: cli-tools
-      namespace: openshift
+    hello-world:
+      name: hello-world
+      namespace: hello-world
+      project: hello-world
+      path: charts/app/hello-world
+    
+    openshift-logging:
+      name: openshift-logging
+      namespace: openshift-logging
       project: hub
-      path: charts/hub/cli-tools
+      kustomize: true
+      path: charts/hub/openshift-logging/instance/overlays/default
 
-  imperative: {}
+    openshift-compliance:
+      name: openshift-compliance
+      namespace: openshift-compliance
+      project: secured
+      kustomize: true
+      path: charts/secured/compliance-operator/overlays/default
+
+    openshift-file-integrity:
+      name: openshift-file-integrity
+      namespace: openshift-file-integrity
+      project: secured
+      kustomize: true
+      path: charts/secured/file-integrity-operator/instance/overlays/default
+
+    cost-management-operator:
+      name: costmanagement-metrics-operator
+      namespace: costmanagement-metrics-operator
+      project: hub
+      kustomize: true
+      path: charts/hub/cost-management-operator/overlays/default
+
+    ossm:
+      name: servicemeshoperator
+      namespace: openshift-operators
+      project: secured
+      kustomize: true
+      path: charts/secured/openshift-servicemesh/instance/overlays/default
+
+    cert-manager:
+      name: cert-manager
+      namespace: cert-maanger
+      project: secured
+      kustomize: true
+      path: charts/secured/cert-manager/overlays/default
+
+  imperative: 
+      unseal: false
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
     # The default schedule is every 10 minutes: imperative.schedule
     # Total timeout of all jobs is 1h: imperative.activeDeadlineSeconds
