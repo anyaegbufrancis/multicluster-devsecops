@@ -187,8 +187,9 @@ clusterGroup:
 # Projects are just ArgoCD groupings that can be filtered on.
   projects:
   - hub
-  - opp
   - external-secrets
+  - secured
+  - app
 
   sharedValueFiles:
     - '/overrides/values-{{ $.Values.global.clusterPlatform }}.yaml'
@@ -198,7 +199,7 @@ clusterGroup:
     acm:
       name: acm   #arbitary
       namespace: open-cluster-management
-      project: opp
+      project: hub
       path: common/acm
       ignoreDifferences:
       - group: internal.open-cluster-management.io
@@ -230,7 +231,7 @@ clusterGroup:
       name: postgresql
       namespace: postgresql
       project: postgresql
-      path: charts/all/apps/postgresql
+      path: charts/infra/postgresql
 
     acs-secured:
       name: acs-secured
