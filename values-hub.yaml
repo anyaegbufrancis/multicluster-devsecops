@@ -299,6 +299,12 @@ clusterGroup:
       project: secured
       kustomize: true
       path: charts/secured/cert-manager/overlays/default
+    
+    cli-tools:
+      name: cli-tools
+      namespace: openshift
+      project: hub
+      path: charts/hub/cli-tools
 
   imperative: 
       unseal: false
