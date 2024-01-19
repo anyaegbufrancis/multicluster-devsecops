@@ -233,6 +233,12 @@ clusterGroup:
       project: app
       path: charts/infra/postgresql
 
+    acs-central:
+      name: acs-central
+      namespace: stackrox
+      project: secured
+      path: charts/secured/acs/central
+
     acs-secured:
       name: acs-secured
       namespace: stackrox
