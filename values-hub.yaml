@@ -230,7 +230,7 @@ clusterGroup:
     postgresql:
       name: postgresql
       namespace: postgresql
-      project: postgresql
+      project: app
       path: charts/infra/postgresql
 
     acs-secured:
@@ -249,7 +249,7 @@ clusterGroup:
     hello-world:
       name: hello-world
       namespace: hello-world
-      project: hello-world
+      project: app
       path: charts/app/hello-world
     
     openshift-logging:
