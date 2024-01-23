@@ -14,25 +14,29 @@ clusterGroup:
         operatorGroup: true
         targetNamespaces:
           - open-cluster-management
+
   - hello-world:
         operatorGroup: false
 
   - ekho-external-secrets:
         operatorGroup: true
   
-  - ansible-automation-platform:
-        operatorGroup: true
-        labels:
-          openshift.io/cluster-monitoring: "true"
+  # - ansible-automation-platform:
+  #       operatorGroup: true
+  #       labels:
+  #         openshift.io/cluster-monitoring: "true"
 
   - postgresql:
+      operatorGroup: false
+
+  - splunk:
       operatorGroup: false
 
   - stackrox:
       operatorGroup: false
 
-  - istio-system:
-      operatorGroup: false
+  # - istio-system:
+  #     operatorGroup: false
 
   - rhacs-operator:
         operatorGroup: true
@@ -42,8 +46,9 @@ clusterGroup:
   - policies:
         operatorGroup: false
 
-  - openshift-operators-redhat:
-      operatorGroup: true
+  # - openshift-operators-redhat:
+  #     operatorGroup: true
+
   - openshift-file-integrity:
         annotations:
           openshift.io/display-name: OpenShift File Integrity Operator
@@ -51,8 +56,9 @@ clusterGroup:
         targetNamespaces:
             - openshift-file-integrity
 
-  - openshift-distributed-tracing:
-      operatorGroup: true
+  # - openshift-distributed-tracing:
+  #     operatorGroup: true
+
   - group-sync-operator:
       operatorGroup: true
       annotations:
@@ -62,13 +68,15 @@ clusterGroup:
         openshift.io/cluster-monitoring: "true"
       targetNamespaces:
         - group-sync-operator
-  - costmanagement-metrics-operator:
-      operatorGroup: true
-      annotations:
-        openshift.io/description: Operator that provides cost management information to cloud.redhat.com
-        openshift.io/display-name: Red Hat Cost Management Operator
-      targetNamespaces:
-        - costmanagement-metrics-operator
+
+  # - costmanagement-metrics-operator:
+  #     operatorGroup: true
+  #     annotations:
+  #       openshift.io/description: Operator that provides cost management information to cloud.redhat.com
+  #       openshift.io/display-name: Red Hat Cost Management Operator
+  #     targetNamespaces:
+  #       - costmanagement-metrics-operator
+
   - cert-manager-operator:
       operatorGroup: true
       annotations:
@@ -77,25 +85,28 @@ clusterGroup:
         openshift.io/cluster-monitoring: "true"
       targetNamespaces:
         - cert-manager-operator
+
   - openshift-compliance:
       operatorGroup: true
       annotations:
         openshift.io/display-name: OpenShift Compliance Operator
       targetNamespaces:
         - openshift-compliance
+
   - openshift-logging:
       operatorGroup: true
       labels:
         openshift.io/cluster-monitoring: "true"
       targetNamespaces:
         - openshift-logging
-  - rhbk-keycloak:
-      annotations:
-        openshift.io/description: "Red Hat Keycloak project"
-        openshift.io/display-name: "Red Hat Build of Keycloak"
-      operatorGroup: true
-      targetNamespaces:
-          - rhbk-keycloak
+
+  # - rhbk-keycloak:
+  #     annotations:
+  #       openshift.io/description: "Red Hat Keycloak project"
+  #       openshift.io/display-name: "Red Hat Build of Keycloak"
+  #     operatorGroup: true
+  #     targetNamespaces:
+  #         - rhbk-keycloak
 #  subscriptions:  OpenShift Operator subscriptions from OLM/OperatorHub
 #  - name: the Operator package name (required)
 #    namespace: expected namespace as specified by Operator (defaults to openshift-operators)
@@ -109,10 +120,10 @@ clusterGroup:
       name: advanced-cluster-management
       namespace: open-cluster-management
 
-    ansible-automation-platform:
-      name: ansible-automation-platform-operator
-      namespace: ansible-automation-platform
-      channel: stable-2.4-cluster-scoped
+    # ansible-automation-platform:
+    #   name: ansible-automation-platform-operator
+    #   namespace: ansible-automation-platform
+    #   channel: stable-2.4-cluster-scoped
 
     acs:
       name: rhacs-operator  #packageName
@@ -124,31 +135,31 @@ clusterGroup:
       source: community-operators
       sourceNamespace: openshift-marketplace
 
-    rhbk-keycloak:
-      name: rhbk-operator
-      namespace: rhbk-keycloak
-      channel: stable-v22
+    # rhbk-keycloak:
+    #   name: rhbk-operator
+    #   namespace: rhbk-keycloak
+    #   channel: stable-v22
 
-    elasticsearch:
-      name: elasticsearch-operator
-      channel: stable
+    # elasticsearch:
+    #   name: elasticsearch-operator
+    #   channel: stable
 
-    jaeger:
-      name: jaeger-product
-      channel: stable
+    # jaeger:
+    #   name: jaeger-product
+    #   channel: stable
 
-    kiali:
-      name: kiali-ossm
-      channel: stable
+    # kiali:
+    #   name: kiali-ossm
+    #   channel: stable
 
-    ossm:
-      name: servicemeshoperator
-      channel: stable
+    # ossm:
+    #   name: servicemeshoperator
+    #   channel: stable
 
-    cost:
-      name: costmanagement-metrics-operator
-      namespace: costmanagement-metrics-operator
-      channel: stable
+    # cost:
+    #   name: costmanagement-metrics-operator
+    #   namespace: costmanagement-metrics-operator
+    #   channel: stable
 
     certmanager:
       name: openshift-cert-manager-operator
@@ -176,9 +187,9 @@ clusterGroup:
       namespace: openshift-logging
       channel: stable
 
-    openshift-pipelines-operator:
-      name: openshift-pipelines-operator-rh
-      channel: pipelines-1.9
+    # openshift-pipelines-operator:
+    #   name: openshift-pipelines-operator-rh
+    #   channel: pipelines-1.9
 
     
 
@@ -190,6 +201,7 @@ clusterGroup:
   - external-secrets
   - secured
   - app
+  - observability
 
   sharedValueFiles:
     - '/overrides/values-{{ $.Values.global.clusterPlatform }}.yaml'
@@ -207,12 +219,12 @@ clusterGroup:
         jsonPointers:
           - /spec/loggingCA
 
-    aap-instance:
-      name: ansible-automation-platform
-      namespace: aap
-      project: hub
-      kustomize: true
-      path: charts/hub/ansible-automation-platform/overlays/default
+    # aap-instance:
+    #   name: ansible-automation-platform
+    #   namespace: aap
+    #   project: hub
+    #   kustomize: true
+    #   path: charts/hub/ansible-automation-platform/overlays/default
 
     autoscaler:
       name: cluster-primer
@@ -220,12 +232,12 @@ clusterGroup:
       project: hub
       path: charts/infra/autoscaler
 
-    rhbk-keycloak:
-      name: rhbk-keycloak
-      namespace: rhbk-keycloak
-      project: hub
-      kustomize: true
-      path: charts/hub/redhat-keycloak/overlays/default
+    # rhbk-keycloak:
+    #   name: rhbk-keycloak
+    #   namespace: rhbk-keycloak
+    #   project: hub
+    #   kustomize: true
+    #   path: charts/hub/redhat-keycloak/overlays/default
 
     postgresql:
       name: postgresql
@@ -279,19 +291,19 @@ clusterGroup:
       kustomize: true
       path: charts/secured/file-integrity-operator/instance/overlays/default
 
-    cost-management-operator:
-      name: costmanagement-metrics-operator
-      namespace: costmanagement-metrics-operator
-      project: hub
-      kustomize: true
-      path: charts/hub/cost-management-operator/overlays/default
+    # cost-management-operator:
+    #   name: costmanagement-metrics-operator
+    #   namespace: costmanagement-metrics-operator
+    #   project: hub
+    #   kustomize: true
+    #   path: charts/hub/cost-management-operator/overlays/default
 
-    ossm:
-      name: servicemeshoperator
-      namespace: openshift-operators
-      project: secured
-      kustomize: true
-      path: charts/secured/openshift-servicemesh/instance/overlays/default
+    # ossm:
+    #   name: servicemeshoperator
+    #   namespace: openshift-operators
+    #   project: secured
+    #   kustomize: true
+    #   path: charts/secured/openshift-servicemesh/instance/overlays/default
 
     cert-manager:
       name: cert-manager
@@ -305,6 +317,12 @@ clusterGroup:
       namespace: openshift
       project: hub
       path: charts/hub/cli-tools
+
+    splunk:
+      name: splunk-install
+      namespace: splunk
+      project: observability
+      path: charts/app/hello-world
 
   imperative: 
       unseal: false
