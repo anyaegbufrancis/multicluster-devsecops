@@ -126,12 +126,13 @@ clusterGroup:
     #   channel: stable-2.4-cluster-scoped
 
     acs:
-      name: rhacs-operator  #packageName
-      namespace: openshift-operators # operator namespace
+      name: rhacs-operator  
+      namespace: openshift-operators 
 
-    # splunk:
-    #   name: splunk-operator  #packageName
-    #   namespace: openshift-operators # operator namespace
+    splunk:
+      name: splunk-operator 
+      source: certified-operators
+      channel: stable
 
     ekho-external-secrets:
       name: external-secrets-operator
