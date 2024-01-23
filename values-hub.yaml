@@ -93,12 +93,12 @@ clusterGroup:
       targetNamespaces:
         - openshift-compliance
 
-  - openshift-logging:
-      operatorGroup: true
-      labels:
-        openshift.io/cluster-monitoring: "true"
-      targetNamespaces:
-        - openshift-logging
+  # - openshift-logging:
+  #     operatorGroup: true
+  #     labels:
+  #       openshift.io/cluster-monitoring: "true"
+  #     targetNamespaces:
+  #       - openshift-logging
 
   # - rhbk-keycloak:
   #     annotations:
@@ -182,10 +182,10 @@ clusterGroup:
       channel: alpha
       source: community-operators
 
-    openshift-logging:
-      name: cluster-logging
-      namespace: openshift-logging
-      channel: stable
+    # openshift-logging:
+    #   name: cluster-logging
+    #   namespace: openshift-logging
+    #   channel: stable
 
     # openshift-pipelines-operator:
     #   name: openshift-pipelines-operator-rh
@@ -270,12 +270,12 @@ clusterGroup:
       project: app
       path: charts/app/hello-world
     
-    openshift-logging:
-      name: openshift-logging
-      namespace: openshift-logging
-      project: hub
-      kustomize: true
-      path: charts/hub/openshift-logging/instance/overlays/default
+    # openshift-logging:
+    #   name: openshift-logging
+    #   namespace: openshift-logging
+    #   project: hub
+    #   kustomize: true
+    #   path: charts/hub/openshift-logging/instance/overlays/default
 
     openshift-compliance:
       name: openshift-compliance
