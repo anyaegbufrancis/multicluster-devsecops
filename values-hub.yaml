@@ -129,10 +129,13 @@ clusterGroup:
       name: rhacs-operator  
       namespace: openshift-operators 
 
-    # splunk:
-    #   name: splunk-operator 
-    #   source: certified-operators
-    #   channel: stable
+    splunk:
+      name: splunk-operator 
+      namespace: openshift-operators 
+      source: certified-operators
+      channel: stable
+      sourceNamespace: openshift-marketplace
+      startingCSV: splunk-operator.v2.4.0
 
     ekho-external-secrets:
       name: external-secrets-operator
