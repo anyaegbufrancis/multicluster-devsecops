@@ -322,7 +322,7 @@ clusterGroup:
       name: splunk-install
       namespace: splunk
       project: observability
-      path: charts/infra/splunk-operator/helm-chart/splunk-operator
+      path: charts/infra/splunk
 
   imperative: 
       unseal: false
