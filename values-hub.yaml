@@ -129,6 +129,10 @@ clusterGroup:
       name: rhacs-operator  #packageName
       namespace: openshift-operators # operator namespace
 
+    splunk:
+      name: splunk-operator  #packageName
+      namespace: openshift-operators # operator namespace
+
     ekho-external-secrets:
       name: external-secrets-operator
       channel: stable
