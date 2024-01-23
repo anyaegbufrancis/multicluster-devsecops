@@ -318,11 +318,11 @@ clusterGroup:
       project: hub
       path: charts/hub/cli-tools
 
-    # splunk:
-    #   name: splunk-install
-    #   namespace: splunk
-    #   project: observability
-    #   path: charts/infra/splunk-operator/helm-chart/splunk-operator
+    splunk:
+      name: splunk-install
+      namespace: splunk
+      project: observability
+      path: charts/infra/splunk-operator/helm-chart/splunk-operator
 
   imperative: 
       unseal: false
