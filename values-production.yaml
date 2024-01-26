@@ -179,7 +179,7 @@ clusterGroup:
     openshift-logging:
       name: openshift-logging
       namespace: openshift-logging
-      project: hub
+      project: infra
       kustomize: true
       path: charts/hub/openshift-logging/instance/overlays/default
 
