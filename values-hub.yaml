@@ -325,11 +325,11 @@ clusterGroup:
       project: hub
       path: charts/hub/cli-tools
 
-    # splunk:
-    #   name: splunk-instance
-    #   namespace: splunk
-    #   project: observability
-    #   path: charts/infra/splunk
+    splunk:
+      name: splunk-instance
+      namespace: splunk
+      project: observability
+      path: charts/infra/splunk
 
   imperative: 
       unseal: false
