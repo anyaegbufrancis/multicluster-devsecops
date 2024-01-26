@@ -8,9 +8,9 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   collection:
-    logs:
-      vector: {}
-      type: vector
+  logs:
+    vector: {}
+    type: vector
   curation:
     curator:
       schedule: 30 3 * * *
@@ -23,7 +23,7 @@ spec:
       redundancyPolicy: SingleRedundancy
       storage: {}
   managementState: Managed
-  visualization:
-    kibana:
-      replicas: 1
-    type: kibana
+  # visualization:
+  #   kibana:
+  #     replicas: 1
+  #   type: kibana
