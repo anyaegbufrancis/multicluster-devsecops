@@ -93,12 +93,12 @@ clusterGroup:
       targetNamespaces:
         - openshift-compliance
 
-  # - openshift-logging:
-  #     operatorGroup: true
-  #     labels:
-  #       openshift.io/cluster-monitoring: "true"
-  #     targetNamespaces:
-  #       - openshift-logging
+  - openshift-logging:
+      operatorGroup: true
+      labels:
+        openshift.io/cluster-monitoring: "true"
+      targetNamespaces:
+        - openshift-logging
 
   # - rhbk-keycloak:
   #     annotations:
@@ -126,16 +126,8 @@ clusterGroup:
     #   channel: stable-2.4-cluster-scoped
 
     acs:
-      name: rhacs-operator  
-      namespace: openshift-operators 
-
-    splunk:
-      name: splunk-operator 
-      namespace: openshift-operators 
-      source: certified-operators
-      channel: stable
-      sourceNamespace: openshift-marketplace
-      startingCSV: splunk-operator.v2.4.0
+      name: rhacs-operator  #packageName
+      namespace: openshift-operators # operator namespace
 
     ekho-external-secrets:
       name: external-secrets-operator
@@ -190,14 +182,21 @@ clusterGroup:
       channel: alpha
       source: community-operators
 
-    # openshift-logging:
-    #   name: cluster-logging
-    #   namespace: openshift-logging
-    #   channel: stable
+    openshift-logging:
+      name: cluster-logging
+      namespace: openshift-logging
+      channel: stable
 
     # openshift-pipelines-operator:
     #   name: openshift-pipelines-operator-rh
     #   channel: pipelines-1.9
+
+    splunk-operator:
+      name: splunk-operator
+      namespace: openshift-operators
+      channel: stable
+      source: certified-operators
+      sourceNamespace: openshift-marketplace
 
     
 
@@ -278,12 +277,12 @@ clusterGroup:
       project: app
       path: charts/app/hello-world
     
-    # openshift-logging:
-    #   name: openshift-logging
-    #   namespace: openshift-logging
-    #   project: hub
-    #   kustomize: true
-    #   path: charts/hub/openshift-logging/instance/overlays/default
+    openshift-logging:
+      name: openshift-logging
+      namespace: openshift-logging
+      project: hub
+      kustomize: true
+      path: charts/hub/openshift-logging/instance/overlays/default
 
     openshift-compliance:
       name: openshift-compliance
@@ -330,7 +329,7 @@ clusterGroup:
     #   name: splunk-install
     #   namespace: splunk
     #   project: observability
-    #   path: charts/infra/splunk
+    #   path: charts/infra/splunk-operator/helm-chart/splunk-operator
 
   imperative: 
       unseal: false
