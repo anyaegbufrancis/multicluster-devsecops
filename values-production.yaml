@@ -200,7 +200,7 @@ clusterGroup:
     cost-management-operator:
       name: costmanagement-metrics-operator
       namespace: costmanagement-metrics-operator
-      project: hub
+      project: infra
       kustomize: true
       path: charts/hub/cost-management-operator/overlays/default
 
