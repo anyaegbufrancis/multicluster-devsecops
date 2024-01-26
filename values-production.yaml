@@ -150,6 +150,7 @@ clusterGroup:
     - app
     - secured
     - infra
+    - hello-world
 
   sharedValueFiles:
     - '/overrides/values-{{ $.Values.global.clusterPlatform }}.yaml'
