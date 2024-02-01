@@ -28,7 +28,7 @@ spec:
             - -c
             - |
                 set -e
-                SOURCE_IMAGE=$(oc get deploy/{{ .Values.operator.controllerManager.deploymentName }} \
+                SOURCE_IMAGE=$(oc get deploy/{{ .Values.operator.controllerManager.deploymentName }} -n openshift-operators \
                   -o jsonpath='{.spec.template.spec.containers[0].image}')
                 TARGET_IMAGE="{{ .Values.operator.controllerManager.image.repository }}:{{ .Values.operator.controllerManager.image.tag }}"
 
