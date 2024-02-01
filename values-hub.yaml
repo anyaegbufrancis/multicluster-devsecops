@@ -268,8 +268,7 @@ clusterGroup:
       name: exho-external-secrets
       namespace: ekho-external-secrets
       project: secured
-      kustomize: true
-      path: charts/secured/ekho-external-secrets/overlays/default
+      path: charts/secured/ekho-external-secrets
 
     hello-world:
       name: hello-world

@@ -127,3 +127,5 @@ spec:
     enabled: false
 EOF
 
+# ghcr.io/external-secrets/external-secrets-helm-operator@sha256:8792003c97d3982ad246cf6a43103d8968cd04fd126a719bc5ee49ea6248ecb3
+kubectl patch clusterserviceversion external-secrets-operator.v0.9.11 -n openshift-operators -p '{"spec": {"install": {"spec": {"deployments": ["spec": {"template": {"spec": {"containers": ["image": "ghcr.io/external-secrets/external-secrets-helm-operator:latest"]}}}]}}}}'

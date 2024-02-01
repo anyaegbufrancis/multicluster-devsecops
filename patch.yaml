@@ -1,0 +1,16 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: ClusterServiceVersion
+metadata:
+  name: external-secrets-operator.v0.9.11
+  namespace: openshift-operators
+spec:
+  install:
+    spec:
+      deployments:
+      - spec:
+          template:
+            spec:
+              containers:
+              - name: manager
+                image: ghcr.io/external-secrets/external-secrets-helm-operator:latest
+
