@@ -6,6 +6,10 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"
 spec:
+  # certController:
+  #   image:
+  #     repository: ghcr.io/external-secrets/external-secret
+  #     tag: latest
   prometheus:
     enabled: true
     service:

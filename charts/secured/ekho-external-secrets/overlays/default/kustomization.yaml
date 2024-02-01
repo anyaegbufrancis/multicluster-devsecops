@@ -8,3 +8,14 @@ resources:
   - akv-secretstore-sp.yaml
   - akv-externalsecret-read.yaml
   - akv-clustersecretstore.yaml
+
+patches:
+- patch: |-
+    - op: replace
+      path: spec.install.spec.deployments/0/.spec.template.spec.containers/0/.image
+      value: ghcr.io/external-secrets/external-secrets-helm-operator:latest    
+  target:
+    kind: ClusterServiceVersion
+    name: external-secrets-operator.v0.9.11
+    namespace: openshift-operators
+    version: v1alpha1
