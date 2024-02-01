@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: {{ include "eso-operator-patch.name" . }}
-  namespace: {{ .Values.operator.namespace }}
+  namespace: {{ .Values.operator.operator_namespace }}
   labels:
     {{- include "eso-operator-patch.labels" . | nindent 4 }}
 spec:

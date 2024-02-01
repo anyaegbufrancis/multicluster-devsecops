@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: eso-images-patch-sa
-  namespace: {{ .Values.operator.namespace }}
+  namespace: {{ .Values.operator.operator_namespace }}
   labels:
     {{- include "eso-operator-patch.labels" . | nindent 4 }}
 ---
@@ -11,7 +11,7 @@ kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: eso-images-patch-sa
-  namespace: {{ .Values.operator.namespace }}
+  namespace: {{ .Values.operator.operator_namespace }}
   labels:
     {{- include "eso-operator-patch.labels" . | nindent 4 }}
 rules:
@@ -35,7 +35,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: eso-images-patch-sa
-  namespace: {{ .Values.operator.namespace }}
+  namespace: {{ .Values.operator.operator_namespace }}
   labels:
     {{- include "eso-operator-patch.labels" . | nindent 4 }}
 roleRef:
@@ -45,4 +45,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: eso-images-patch-sa
-  namespace: {{ .Values.operator.namespace }}
+  namespace: {{ .Values.operator.operator_namespace }}
