@@ -17,7 +17,7 @@ operator:
       tag: 'v0.9.10'
 
   controllerManager:
-    startingCSV: external-secrets-operator.v0.9.10
+    startingCSV: external-secrets-operator.v0.9.11
     deploymentName: "external-secrets-operator-controller-manager"
     image:
       ## Private image repo

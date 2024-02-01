@@ -16,7 +16,7 @@ metadata:
     {{- include "eso-operator-patch.labels" . | nindent 4 }}
 rules:
 - apiGroups: ["apps"]
-  resources: ["deployments, "clusterserviceversion"]
+  resources: ["deployments"]
   verbs: ["get", "list", "update", "patch"]
   resourceNames:
   - external-secrets-operator-controller-manager
