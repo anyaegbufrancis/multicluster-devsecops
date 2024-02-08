@@ -18,8 +18,8 @@ clusterGroup:
   - hello-world:
         operatorGroup: false
 
-  # - ekho-external-secrets:
-  #       operatorGroup: true
+  - ekho-external-secrets:
+        operatorGroup: false
   
   # - ansible-automation-platform:
   #       operatorGroup: true
