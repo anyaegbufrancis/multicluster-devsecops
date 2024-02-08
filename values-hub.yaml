@@ -18,8 +18,8 @@ clusterGroup:
   - hello-world:
         operatorGroup: false
 
-  - ekho-external-secrets:
-        operatorGroup: true
+  # - ekho-external-secrets:
+  #       operatorGroup: true
   
   # - ansible-automation-platform:
   #       operatorGroup: true
@@ -129,11 +129,11 @@ clusterGroup:
       name: rhacs-operator  #packageName
       namespace: openshift-operators # operator namespace
 
-    ekho-external-secrets:
-      name: external-secrets-operator
-      channel: stable
-      source: community-operators
-      sourceNamespace: openshift-marketplace
+    # ekho-external-secrets:
+    #   name: external-secrets-operator
+    #   channel: stable
+    #   source: community-operators
+    #   sourceNamespace: openshift-marketplace
 
     # rhbk-keycloak:
     #   name: rhbk-operator
