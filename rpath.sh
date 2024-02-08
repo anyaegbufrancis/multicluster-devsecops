@@ -127,5 +127,22 @@ spec:
     enabled: false
 EOF
 
-# ghcr.io/external-secrets/external-secrets-helm-operator@sha256:8792003c97d3982ad246cf6a43103d8968cd04fd126a719bc5ee49ea6248ecb3
-kubectl patch clusterserviceversion external-secrets-operator.v0.9.11 -n openshift-operators -p '{"spec": {"install": {"spec": {"deployments": ["spec": {"template": {"spec": {"containers": ["image": "ghcr.io/external-secrets/external-secrets-helm-operator:latest"]}}}]}}}}'
+# # ghcr.io/external-secrets/external-secrets-helm-operator@sha256:8792003c97d3982ad246cf6a43103d8968cd04fd126a719bc5ee49ea6248ecb3
+# kubectl patch clusterserviceversion external-secrets-operator.v0.9.11 -n openshift-operators -p '{"spec": {"install": {"spec": {"deployments": ["spec": {"template": {"spec": {"containers": ["image": "ghcr.io/external-secrets/external-secrets-helm-operator:latest"]}}}]}}}}'
+# kubectl patch clusterserviceversion external-secrets-operator.v0.9.11 -n openshift-operators -p '{"spec": {"install": {"spec": {"deployments": [{"spec": {"template": {"spec": {"containers": [{"name": "manager", "image": "ghcr.io/external-secrets/external-secrets-helm-operator:latest"}]}}}}]}}}}'
+
+# kubectl patch clusterserviceversion external-secrets-operator.v0.9.11 --type='json' -p='[{"op": "replace", "path": "/spec/install/spec/deployments/0/spec/template/spec/containers/0/image", "value": "ghcr.io/external-secrets/external-secrets-helm-operator:latest"}]'
+
+
+# NAMESPACE="openshift-operators"
+
+# oc delete csv/external-secrets-operator.v0.9.11 -n $NAMESPACE
+# oc delete sub/external-secrets-operator -n $NAMESPACE
+
+# oc delete crd clusterexternalsecrets.external-secrets.io \
+#     clustersecretstores.external-secrets.io \
+#     externalsecrets.external-secrets.io \
+#     operatorconfigs.operator.external-secrets.io \
+#     secretstores.external-secrets.io 
+
+# oc delete operator/external-secrets-operator.openshift-operators -n $NAMESPACE

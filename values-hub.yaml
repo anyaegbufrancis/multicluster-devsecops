@@ -268,7 +268,12 @@ clusterGroup:
       name: exho-external-secrets
       namespace: ekho-external-secrets
       project: secured
-      path: charts/secured/ekho-external-secrets
+      # path: charts/secured/ekho-external-secrets
+      path: common/ekho-external-secrets
+      # overrides:
+      #    - name: image.tag
+      #      value: "example-registry.com"
+      
 
     hello-world:
       name: hello-world
