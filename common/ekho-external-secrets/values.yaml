@@ -501,4 +501,39 @@ global:
 clusterGroup:
   isHubCluster: true
 
+operator:
+  namespace: ekho-external-secrets
+  operator_namespace: openshift-operators
+  name: external-secrets-operator
+  imagePatchCronJob:
+    # The service account and associated roles must be created first.
+    serviceAccountName: eso-images-patch-sa
+    # CronJob will run every 5min
+    patchSchedule: '*/5 * * * *'
 
+  operatorConfig:
+    deploymentName: "external-secrets-operator"
+    image:
+      ##Private Image repo
+      repository: "ghcr.io/external-secrets/external-secrets"
+      pullPolicy: IfNotPresent
+      tag: 'v0.9.10'
+
+  controllerManager:
+    startingCSV: external-secrets-operator.v0.9.11
+    deploymentName: "external-secrets-operator-controller-manager"
+    image:
+      ## Private image repo
+      repository: "ghcr.io/external-secrets/external-secrets"
+      pullPolicy: IfNotPresent
+      tag: 'v0.9.10'
+
+eso:
+  tenant_id: 64dc69e4-d083-49fc-9569-ebece1dd1408
+  vault_url: https://dd-aro-cluster-akv-demo.vault.azure.net
+
+rbac_roles:
+   read_client_id: YzBmZTQwNTgtZmM4NS00ZGI5LWJjNWUtNDE0YTdjYTg0ZjZmCg==
+   read_client_secret: S1RVOFF+aVBKQl9KUlFvfmguUHR1S2pBXzNmM3NGN0NoQ3BpZGI4Ygo=
+   write_client_id: MDg0NjdiOTYtNDI2OC00NjA0LTg0YjgtZjZhOTkxN2Y3OTUxCg==
+   write_client_secret: S1RVOFF+aVBKQl9KUlFvfmguUHR1S2pBXzNmM3NGN0NoQ3BpZGI4Ygo=
