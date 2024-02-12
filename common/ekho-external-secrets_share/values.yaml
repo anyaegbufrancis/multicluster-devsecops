@@ -1,6 +1,5 @@
 replicaCount: 1
 
-# revisionHistoryLimit: 10
 image:
   repository: ghcr.io/external-secrets/external-secrets
   pullPolicy: IfNotPresent
@@ -11,14 +10,9 @@ crds:
   createClusterExternalSecret: true
   createClusterSecretStore: true
   createPushSecret: true
-  # annotations: {}
   conversion:
     enabled: true
 
-# imagePullSecrets: []
-# nameOverride: ""
-# fullnameOverride: ""
-# commonLabels: {}
 leaderElect: false
 controllerClass: ""
 extendedMetricLabels: false
@@ -32,23 +26,11 @@ concurrent: 1
 serviceAccount:
   create: true
   automount: true
-  # annotations: {}
-  # extraLabels: {}
-  # name: ""
 
 rbac:
   create: true
   servicebindings:
     create: true
-
-# extraEnv: []
-# extraArgs: {}
-# extraVolumes: []
-# extraVolumeMounts: []
-# extraContainers: []
-# deploymentAnnotations: {}
-# podAnnotations: {}
-# podLabels: {}
 
 podSecurityContext: {}
 securityContext:
@@ -65,12 +47,9 @@ resources: {}
 serviceMonitor:
   enabled: false
   namespace: ""
-  # additionalLabels: {}
   interval: 30s
   scrapeTimeout: 25s
   honorLabels: false
-  # metricRelabelings: []
-  # relabelings: []
 
 metrics:
   listen:
@@ -78,11 +57,7 @@ metrics:
   service:
     enabled: false
     port: 8080
-#     annotations: {}
-# nodeSelector: {}
-# tolerations: []
-# topologySpreadConstraints: []
-# affinity: {}
+
 priorityClassName: ""
 podDisruptionBudget:
   enabled: false
@@ -112,10 +87,6 @@ webhook:
   serviceAccount:
     create: true
     automount: true
-  #   annotations: {}
-  #   extraLabels: {}
-  #   name: ""
-  # nodeSelector: {}
 
   certManager:
     enabled: false
@@ -128,10 +99,7 @@ webhook:
         name: "my-issuer"
       duration: ""
       renewBefore: ""
-  #     annotations: {}
-  # tolerations: []
-  # topologySpreadConstraints: []
-  # affinity: {}
+
   priorityClassName: ""
   podDisruptionBudget:
     enabled: false
@@ -143,22 +111,10 @@ webhook:
     service:
       enabled: false
       port: 8080
-      # annotations: {}
 
   readinessProbe:
     address: ""
     port: 8081
-  # extraEnv: []
-  # extraArgs: {}
-  # extraVolumes: []
-  # extraVolumeMounts: []
-  # secretAnnotations: {}
-  # deploymentAnnotations: {}
-  # podAnnotations: {}
-
-  # podLabels: {}
-
-  # podSecurityContext: {}
 
   securityContext:
     allowPrivilegeEscalation: false
@@ -188,16 +144,8 @@ certController:
   serviceAccount:
     create: true
     automount: true
-  #   annotations: {}
-  #   extraLabels: {}
-  #   name: ""
-  # nodeSelector: {}
-  # tolerations: []
-  # topologySpreadConstraints: []
 
-  # affinity: {}
   hostNetwork: false
-  # priorityClassName: ""
   podDisruptionBudget:
     enabled: false
     minAvailable: 1
@@ -211,14 +159,7 @@ certController:
   readinessProbe:
     address: ""
     port: 8081
-  # extraEnv: []
-  # extraArgs: {}
-  # extraVolumes: []
-  # extraVolumeMounts: []
-  # deploymentAnnotations: {}
-  # podAnnotations: {}
-  # podLabels: {}
-  # podSecurityContext: {}
+
   securityContext:
     allowPrivilegeEscalation: false
     capabilities:
@@ -227,25 +168,6 @@ certController:
     readOnlyRootFilesystem: true
     runAsNonRoot: true
     seccompProfile: null
-#   resources: {}
-# dnsConfig: {}
-# podSpecExtra: {}
-# global:
-#   hubClusterDomain: hub.example.com
-#   clusterDomain: foo.example.com
-
-# clusterGroup:
-#   isHubCluster: true
-
-# operator:
-#   namespace: ekho-external-secrets
-#   name: external-secrets-operator
-#   operatorConfig:
-#     deploymentName: "external-secrets-operator"
-#     image:
-#       repository: "ghcr.io/external-secrets/external-secrets"
-#       pullPolicy: IfNotPresent
-#       tag: 'v0.9.10'
 
   controllerManager:
     startingCSV: external-secrets-operator.v0.9.11
