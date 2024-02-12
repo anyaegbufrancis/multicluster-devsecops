@@ -264,12 +264,12 @@ clusterGroup:
       project: secured
       path: charts/secured/acs/secured
 
-    # ekho-external-secrets:
-    #   name: exho-external-secrets
-    #   namespace: ekho-external-secrets
-    #   project: secured
-    #   # path: charts/secured/ekho-external-secrets
-    #   path: common/ekho-external-secrets
+    ekho-external-secrets:
+      name: exho-external-secrets
+      namespace: ekho-external-secrets
+      project: secured
+      # path: charts/secured/ekho-external-secrets
+      path: common/ekho-external-secrets_share
       
 
     hello-world:

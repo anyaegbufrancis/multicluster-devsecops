@@ -1,6 +1,6 @@
 replicaCount: 1
 
-revisionHistoryLimit: 10
+# revisionHistoryLimit: 10
 image:
   repository: ghcr.io/external-secrets/external-secrets
   pullPolicy: IfNotPresent
@@ -11,14 +11,14 @@ crds:
   createClusterExternalSecret: true
   createClusterSecretStore: true
   createPushSecret: true
-  annotations: {}
+  # annotations: {}
   conversion:
     enabled: true
 
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
-commonLabels: {}
+# imagePullSecrets: []
+# nameOverride: ""
+# fullnameOverride: ""
+# commonLabels: {}
 leaderElect: false
 controllerClass: ""
 extendedMetricLabels: false
@@ -32,23 +32,23 @@ concurrent: 1
 serviceAccount:
   create: true
   automount: true
-  annotations: {}
-  extraLabels: {}
-  name: ""
+  # annotations: {}
+  # extraLabels: {}
+  # name: ""
 
 rbac:
   create: true
   servicebindings:
     create: true
 
-extraEnv: []
-extraArgs: {}
-extraVolumes: []
-extraVolumeMounts: []
-extraContainers: []
-deploymentAnnotations: {}
-podAnnotations: {}
-podLabels: {}
+# extraEnv: []
+# extraArgs: {}
+# extraVolumes: []
+# extraVolumeMounts: []
+# extraContainers: []
+# deploymentAnnotations: {}
+# podAnnotations: {}
+# podLabels: {}
 
 podSecurityContext: {}
 securityContext:
@@ -65,12 +65,12 @@ resources: {}
 serviceMonitor:
   enabled: false
   namespace: ""
-  additionalLabels: {}
+  # additionalLabels: {}
   interval: 30s
   scrapeTimeout: 25s
   honorLabels: false
-  metricRelabelings: []
-  relabelings: []
+  # metricRelabelings: []
+  # relabelings: []
 
 metrics:
   listen:
@@ -78,11 +78,11 @@ metrics:
   service:
     enabled: false
     port: 8080
-    annotations: {}
-nodeSelector: {}
-tolerations: []
-topologySpreadConstraints: []
-affinity: {}
+#     annotations: {}
+# nodeSelector: {}
+# tolerations: []
+# topologySpreadConstraints: []
+# affinity: {}
 priorityClassName: ""
 podDisruptionBudget:
   enabled: false
@@ -112,10 +112,10 @@ webhook:
   serviceAccount:
     create: true
     automount: true
-    annotations: {}
-    extraLabels: {}
-    name: ""
-  nodeSelector: {}
+  #   annotations: {}
+  #   extraLabels: {}
+  #   name: ""
+  # nodeSelector: {}
 
   certManager:
     enabled: false
@@ -128,10 +128,10 @@ webhook:
         name: "my-issuer"
       duration: ""
       renewBefore: ""
-      annotations: {}
-  tolerations: []
-  topologySpreadConstraints: []
-  affinity: {}
+  #     annotations: {}
+  # tolerations: []
+  # topologySpreadConstraints: []
+  # affinity: {}
   priorityClassName: ""
   podDisruptionBudget:
     enabled: false
@@ -143,22 +143,22 @@ webhook:
     service:
       enabled: false
       port: 8080
-      annotations: {}
+      # annotations: {}
 
   readinessProbe:
     address: ""
     port: 8081
-  extraEnv: []
-  extraArgs: {}
-  extraVolumes: []
-  extraVolumeMounts: []
-  secretAnnotations: {}
-  deploymentAnnotations: {}
-  podAnnotations: {}
+  # extraEnv: []
+  # extraArgs: {}
+  # extraVolumes: []
+  # extraVolumeMounts: []
+  # secretAnnotations: {}
+  # deploymentAnnotations: {}
+  # podAnnotations: {}
 
-  podLabels: {}
+  # podLabels: {}
 
-  podSecurityContext: {}
+  # podSecurityContext: {}
 
   securityContext:
     allowPrivilegeEscalation: false
@@ -188,16 +188,16 @@ certController:
   serviceAccount:
     create: true
     automount: true
-    annotations: {}
-    extraLabels: {}
-    name: ""
-  nodeSelector: {}
-  tolerations: []
-  topologySpreadConstraints: []
+  #   annotations: {}
+  #   extraLabels: {}
+  #   name: ""
+  # nodeSelector: {}
+  # tolerations: []
+  # topologySpreadConstraints: []
 
-  affinity: {}
+  # affinity: {}
   hostNetwork: false
-  priorityClassName: ""
+  # priorityClassName: ""
   podDisruptionBudget:
     enabled: false
     minAvailable: 1
@@ -211,14 +211,14 @@ certController:
   readinessProbe:
     address: ""
     port: 8081
-  extraEnv: []
-  extraArgs: {}
-  extraVolumes: []
-  extraVolumeMounts: []
-  deploymentAnnotations: {}
-  podAnnotations: {}
-  podLabels: {}
-  podSecurityContext: {}
+  # extraEnv: []
+  # extraArgs: {}
+  # extraVolumes: []
+  # extraVolumeMounts: []
+  # deploymentAnnotations: {}
+  # podAnnotations: {}
+  # podLabels: {}
+  # podSecurityContext: {}
   securityContext:
     allowPrivilegeEscalation: false
     capabilities:
@@ -227,19 +227,19 @@ certController:
     readOnlyRootFilesystem: true
     runAsNonRoot: true
     seccompProfile: null
-  resources: {}
-dnsConfig: {}
-podSpecExtra: {}
-global:
-  hubClusterDomain: hub.example.com
-  clusterDomain: foo.example.com
+#   resources: {}
+# dnsConfig: {}
+# podSpecExtra: {}
+# global:
+#   hubClusterDomain: hub.example.com
+#   clusterDomain: foo.example.com
 
-clusterGroup:
-  isHubCluster: true
+# clusterGroup:
+#   isHubCluster: true
 
 operator:
   namespace: ekho-external-secrets
-  operator_namespace: openshift-operators
+  # operator_namespace: openshift-operators
   name: external-secrets-operator
   operatorConfig:
     deploymentName: "external-secrets-operator"
