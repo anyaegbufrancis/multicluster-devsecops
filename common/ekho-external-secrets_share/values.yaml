@@ -1,0 +1,267 @@
+replicaCount: 1
+
+revisionHistoryLimit: 10
+image:
+  repository: ghcr.io/external-secrets/external-secrets
+  pullPolicy: IfNotPresent
+  tag: "v0.9.11-ubi"
+installCRDs: true
+
+crds:
+  createClusterExternalSecret: true
+  createClusterSecretStore: true
+  createPushSecret: true
+  annotations: {}
+  conversion:
+    enabled: true
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+commonLabels: {}
+leaderElect: false
+controllerClass: ""
+extendedMetricLabels: false
+scopedNamespace: ""
+scopedRBAC: false
+processClusterExternalSecret: true
+processClusterStore: true
+processPushSecret: true
+createOperator: true
+concurrent: 1
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  extraLabels: {}
+  name: ""
+
+rbac:
+  create: true
+  servicebindings:
+    create: true
+
+extraEnv: []
+extraArgs: {}
+extraVolumes: []
+extraVolumeMounts: []
+extraContainers: []
+deploymentAnnotations: {}
+podAnnotations: {}
+podLabels: {}
+
+podSecurityContext: {}
+securityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  seccompProfile: null
+
+resources: {}
+
+serviceMonitor:
+  enabled: false
+  namespace: ""
+  additionalLabels: {}
+  interval: 30s
+  scrapeTimeout: 25s
+  honorLabels: false
+  metricRelabelings: []
+  relabelings: []
+
+metrics:
+  listen:
+    port: 8080
+  service:
+    enabled: false
+    port: 8080
+    annotations: {}
+nodeSelector: {}
+tolerations: []
+topologySpreadConstraints: []
+affinity: {}
+priorityClassName: ""
+podDisruptionBudget:
+  enabled: false
+  minAvailable: 1
+hostNetwork: false
+
+webhook:
+  create: true
+  certCheckInterval: "5m"
+  lookaheadInterval: ""
+  replicaCount: 1
+  revisionHistoryLimit: 10
+
+  certDir: /tmp/certs
+  failurePolicy: Fail
+  hostNetwork: false
+  image:
+    repository: ghcr.io/external-secrets/external-secrets
+    pullPolicy: IfNotPresent
+    tag: "v0.9.11-ubi"
+  imagePullSecrets: []
+  nameOverride: ""
+  fullnameOverride: ""
+  port: 10250
+  rbac:
+    create: true
+  serviceAccount:
+    create: true
+    automount: true
+    annotations: {}
+    extraLabels: {}
+    name: ""
+  nodeSelector: {}
+
+  certManager:
+    enabled: false
+    addInjectorAnnotations: true
+    cert:
+      create: true
+      issuerRef:
+        group: cert-manager.io
+        kind: "Issuer"
+        name: "my-issuer"
+      duration: ""
+      renewBefore: ""
+      annotations: {}
+  tolerations: []
+  topologySpreadConstraints: []
+  affinity: {}
+  priorityClassName: ""
+  podDisruptionBudget:
+    enabled: false
+    minAvailable: 1
+  metrics:
+    listen:
+      port: 8080
+
+    service:
+      enabled: false
+      port: 8080
+      annotations: {}
+
+  readinessProbe:
+    address: ""
+    port: 8081
+  extraEnv: []
+  extraArgs: {}
+  extraVolumes: []
+  extraVolumeMounts: []
+  secretAnnotations: {}
+  deploymentAnnotations: {}
+  podAnnotations: {}
+
+  podLabels: {}
+
+  podSecurityContext: {}
+
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    seccompProfile: null
+  resources: {}
+
+certController:
+  create: true
+  requeueInterval: "5m"
+  replicaCount: 1
+  revisionHistoryLimit: 10
+
+  image:
+    repository: ghcr.io/external-secrets/external-secrets
+    pullPolicy: IfNotPresent
+    tag: "v0.9.11-ubi"
+  imagePullSecrets: []
+  nameOverride: ""
+  fullnameOverride: ""
+  rbac:
+    create: true
+  serviceAccount:
+    create: true
+    automount: true
+    annotations: {}
+    extraLabels: {}
+    name: ""
+  nodeSelector: {}
+  tolerations: []
+  topologySpreadConstraints: []
+
+  affinity: {}
+  hostNetwork: false
+  priorityClassName: ""
+  podDisruptionBudget:
+    enabled: false
+    minAvailable: 1
+  metrics:
+    listen:
+      port: 8080
+    service:
+      enabled: false
+      port: 8080
+      annotations: {}
+  readinessProbe:
+    address: ""
+    port: 8081
+  extraEnv: []
+  extraArgs: {}
+  extraVolumes: []
+  extraVolumeMounts: []
+  deploymentAnnotations: {}
+  podAnnotations: {}
+  podLabels: {}
+  podSecurityContext: {}
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    seccompProfile: null
+  resources: {}
+dnsConfig: {}
+podSpecExtra: {}
+global:
+  hubClusterDomain: hub.example.com
+  clusterDomain: foo.example.com
+
+clusterGroup:
+  isHubCluster: true
+
+operator:
+  namespace: ekho-external-secrets
+  operator_namespace: openshift-operators
+  name: external-secrets-operator
+  operatorConfig:
+    deploymentName: "external-secrets-operator"
+    image:
+      repository: "ghcr.io/external-secrets/external-secrets"
+      pullPolicy: IfNotPresent
+      tag: 'v0.9.10'
+
+  controllerManager:
+    startingCSV: external-secrets-operator.v0.9.11
+    deploymentName: "external-secrets-operator-controller-manager"
+    image:
+      repository: "ghcr.io/external-secrets/external-secrets"
+      pullPolicy: IfNotPresent
+      tag: 'v0.9.10'
+
+# eso:
+#   tenant_id: 64dc69e4-d083-49fc-9569-ebece1dd1408
+#   vault_url: https://dd-aro-cluster-akv-demo.vault.azure.net
+
+# rbac_roles:
+#    read_client_id: YzBmZTQwNTgtZmM4NS00ZGI5LWJjNWUtNDE0YTdjYTg0ZjZmCg==
+#    read_client_secret: S1RVOFF+aVBKQl9KUlFvfmguUHR1S2pBXzNmM3NGN0NoQ3BpZGI4Ygo=
+#    write_client_id: MDg0NjdiOTYtNDI2OC00NjA0LTg0YjgtZjZhOTkxN2Y3OTUxCg==
+#    write_client_secret: S1RVOFF+aVBKQl9KUlFvfmguUHR1S2pBXzNmM3NGN0NoQ3BpZGI4Ygo=
