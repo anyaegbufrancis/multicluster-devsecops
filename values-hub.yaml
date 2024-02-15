@@ -269,7 +269,7 @@ clusterGroup:
       namespace: ekho-external-secrets
       project: secured
       # path: charts/secured/ekho-external-secrets
-      path: common/ekho-external-secrets_share
+      path: common/ekho-external-secrets
       
 
     hello-world:

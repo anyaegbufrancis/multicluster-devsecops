@@ -9,14 +9,16 @@ vault.init
 super-linter.log
 /archive
 
-charts/app/v-app1-angel/node_modules
-charts/app/v-app1-angel/package-lock.json
+charts/app//node_modules
+# charts/app/v-app1-angel/package-lock.json
 
 charts/app/v-app1-awaz/node_modules
-charts/app/v-app1-awaz/package-lock.json
+# charts/app/v-app1-awaz/package-lock.json
 
 charts/app/v-app1-ik/node_modules
-charts/app/v-app1-ik/package-lock.json
+# charts/app/v-app1-ik/package-lock.json
 
 charts/app/v-app1-ony/node_modules
-charts/app/v-app1-ony/package-lock.json
+charts/app/*/package-lock.json
+
+charts/app/*/src/images/*
