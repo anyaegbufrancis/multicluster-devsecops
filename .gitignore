@@ -11,6 +11,6 @@ super-linter.log
 
 charts/app/*/node_modules
 charts/app/*/package-lock.json
-charts/app/v-app1*
+charts/app/v-app1-*
 
 charts/app/*/src/images/*
