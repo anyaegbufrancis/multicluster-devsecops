@@ -9,8 +9,3 @@ vault.init
 super-linter.log
 /archive
 
-charts/app/*/node_modules
-charts/app/*/package-lock.json
-charts/app/v-app1-*
-
-charts/app/*/src/images/*
