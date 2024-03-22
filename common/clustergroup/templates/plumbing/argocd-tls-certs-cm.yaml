@@ -28,4 +28,4 @@ kind: ConfigMap
 metadata:
   creationTimestamp: null
   name: argocd-tls-certs-cm
-  namespace: argocd
+  namespace: ngc-hub
