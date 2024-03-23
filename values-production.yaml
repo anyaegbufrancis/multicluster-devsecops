@@ -91,21 +91,21 @@ clusterGroup:
       source: community-operators
       sourceNamespace: openshift-marketplace
 
-    elasticsearch:
-      name: elasticsearch-operator
-      channel: stable
+    # elasticsearch:
+    #   name: elasticsearch-operator
+    #   channel: stable
 
-    jaeger:
-      name: jaeger-product
-      channel: stable
+    # jaeger:
+    #   name: jaeger-product
+    #   channel: stable
 
-    kiali:
-      name: kiali-ossm
-      channel: stable
+    # kiali:
+    #   name: kiali-ossm
+    #   channel: stable
 
-    ossm:
-      name: servicemeshoperator
-      channel: stable
+    # ossm:
+    #   name: servicemeshoperator
+    #   channel: stable
 
     cost:
       name: costmanagement-metrics-operator
@@ -205,12 +205,12 @@ clusterGroup:
       kustomize: true
       path: charts/hub/cost-management-operator/overlays/default
 
-    ossm:
-      name: servicemeshoperator
-      namespace: openshift-operators
-      project: secured
-      kustomize: true
-      path: charts/secured/openshift-servicemesh/instance/overlays/default
+    # ossm:
+    #   name: servicemeshoperator
+    #   namespace: openshift-operators
+    #   project: secured
+    #   kustomize: true
+    #   path: charts/secured/openshift-servicemesh/instance/overlays/default
 
     cert-manager:
       name: cert-manager
