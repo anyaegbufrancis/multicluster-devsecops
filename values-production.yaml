@@ -27,11 +27,11 @@ clusterGroup:
     - ekho-external-secrets:
         operatorGroup: true
 
-    - istio-system:
-        operatorGroup: false
+    # - istio-system:
+    #     operatorGroup: false
 
-    - openshift-operators-redhat:
-        operatorGroup: true
+    # - openshift-operators-redhat:
+    #     operatorGroup: true
 
     - openshift-file-integrity:
         annotations:
@@ -40,8 +40,8 @@ clusterGroup:
         targetNamespaces:
             - openshift-file-integrity
 
-    - openshift-distributed-tracing:
-        operatorGroup: true
+    # - openshift-distributed-tracing:
+    #     operatorGroup: true
 
     - group-sync-operator:
         operatorGroup: true
