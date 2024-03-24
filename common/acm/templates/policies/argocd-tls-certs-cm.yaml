@@ -71,7 +71,7 @@ placementRef:
 subjects:
   ### Add argocd-tls-cm to placement
   - name: argocd-tls-cm-policy
-    kind: policy
+    kind: Policy
     apiGroup: policy.open-cluster-management.io
 ---
 apiVersion: apps.open-cluster-management.io/v1
