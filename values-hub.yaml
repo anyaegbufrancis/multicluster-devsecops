@@ -332,6 +332,12 @@ clusterGroup:
       project: observability
       path: charts/infra/splunk
 
+    gitops-patch:
+      name: gitops-patch
+      namespace: openshift-gitops
+      project: infra
+      path: charts/infra/gitops-patch
+
   imperative: 
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
     # The default schedule is every 10 minutes: imperative.schedule
