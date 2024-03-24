@@ -3,7 +3,7 @@ global:
 
 main:
   git:
-    repoURL: https://github.com/pattern-clone/mypattern
+    repoURL: https://github.com/anyaegbufrancis/multicluster-devsecops.git
     revision: main
 
   gitops:
@@ -17,7 +17,7 @@ main:
     channel: fast
     source: community-operators
 
-  clusterGroupName: default
+  clusterGroupName: hub
 
   # If you are using a private repository define the secret where
   # credentials to access the private repository are
