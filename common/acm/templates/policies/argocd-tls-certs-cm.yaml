@@ -17,7 +17,7 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name: argocd-tls-cm-policy
+          name: argocd-tls-cm-config
         spec:
           remediationAction: enforce
           severity: medium
