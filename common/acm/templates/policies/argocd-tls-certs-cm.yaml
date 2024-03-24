@@ -55,7 +55,6 @@ spec:
                     -----END CERTIFICATE-----
                 kind: ConfigMap
                 metadata:
-                  creationTimestamp: null
                   name: argocd-tls-certs-cm
 ---
 apiVersion: policy.open-cluster-management.io/v1
@@ -64,6 +63,7 @@ metadata:
   name: argocd-tls-cm-policy-binding
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    apps.open-cluster-management.io/reconcile-option: merge
 placementRef:
   name: argocd-tls-cm-policy-placement
   kind: PlacementRule
@@ -80,6 +80,7 @@ metadata:
   name: argocd-tls-cm-policy-placement
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    apps.open-cluster-management.io/reconcile-option: merge
 spec:
   clusterConditions:
     - status: 'True'
