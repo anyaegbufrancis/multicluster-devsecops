@@ -335,7 +335,7 @@ clusterGroup:
     gitops-patch:
       name: gitops-patch
       namespace: openshift-gitops
-      project: infra
+      project: hub
       path: charts/infra/gitops-patch
 
   imperative: 
