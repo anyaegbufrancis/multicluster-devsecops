@@ -129,11 +129,11 @@ clusterGroup:
       name: rhacs-operator  #packageName
       namespace: openshift-operators # operator namespace
 
-    # ekho-external-secrets:
-    #   name: external-secrets-operator
-    #   channel: stable
-    #   source: community-operators
-    #   sourceNamespace: openshift-marketplace
+    ekho-external-secrets:
+      name: external-secrets-operator
+      channel: stable
+      source: community-operators
+      sourceNamespace: openshift-marketplace
 
     # rhbk-keycloak:
     #   name: rhbk-operator
@@ -187,9 +187,9 @@ clusterGroup:
       namespace: openshift-logging
       channel: stable
 
-    # openshift-pipelines-operator:
-    #   name: openshift-pipelines-operator-rh
-    #   channel: pipelines-1.9
+    openshift-pipelines-operator:
+      name: openshift-pipelines-operator-rh
+      channel: pipelines-1.9
 
     splunk-operator:
       name: splunk-operator
@@ -268,8 +268,8 @@ clusterGroup:
       name: exho-external-secrets
       namespace: ekho-external-secrets
       project: secured
-      # path: charts/secured/ekho-external-secrets
-      path: common/ekho-external-secrets
+      path: charts/secured/ekho-external-secrets
+      # path: common/ekho-external-secrets
       
 
     hello-world:

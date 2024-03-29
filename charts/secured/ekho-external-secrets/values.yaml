@@ -30,7 +30,7 @@ eso:
   vault_url: https://dd-aro-cluster-akv-demo.vault.azure.net
 
 rbac_roles:
-   read_client_id: YzBmZTQwNTgtZmM4NS00ZGI5LWJjNWUtNDE0YTdjYTg0ZjZmCg==
-   read_client_secret: S1RVOFF+aVBKQl9KUlFvfmguUHR1S2pBXzNmM3NGN0NoQ3BpZGI4Ygo=
+   read_client_id: Y2ZhMjI0YWQtMzcwZS00MjhhLWFlMjctYmMxMTIyMzQ0NWNiCg==
+   read_client_secret: RDFrOFF+cX45YjFRTEx3LktEUUdDN3FSSlhSaWpxZHhPYUI1Z2NNNgo=
    write_client_id: MDg0NjdiOTYtNDI2OC00NjA0LTg0YjgtZjZhOTkxN2Y3OTUxCg==
    write_client_secret: S1RVOFF+aVBKQl9KUlFvfmguUHR1S2pBXzNmM3NGN0NoQ3BpZGI4Ygo=
