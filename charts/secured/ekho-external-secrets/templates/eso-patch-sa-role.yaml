@@ -46,3 +46,5 @@ subjects:
 - kind: ServiceAccount
   name: eso-images-patch-sa
   namespace: {{ .Values.operator.operator_namespace }}
+
+

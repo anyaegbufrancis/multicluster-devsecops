@@ -16,8 +16,8 @@ min_replica_per_region: 2 #1
 max_replica_per_region: 5 #2
 
 name:
-   - name: dd-aro-ddl2r-worker-eastus1
-   - name: dd-aro-ddl2r-worker-eastus2
-   - name: dd-aro-ddl2r-worker-eastus3
+   - name: dd-aro-kltcl-worker-eastus1
+   - name: dd-aro-kltcl-worker-eastus2
+   - name: dd-aro-kltcl-worker-eastus3
 
 
